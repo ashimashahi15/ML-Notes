@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Resources | Your Ultimate Guide to Machine Learning</title>
+    <meta name="description"
+        content="Access unit-wise notes, previous year papers, question banks, and assignments for your Machine Learning course.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="logo" onclick="app.showSection('home')">ML Portal</div>
+        <ul class="nav-links">
+            <li><a onclick="app.showSection('notes')" data-section="notes">Notes</a></li>
+            <li><a onclick="app.showSection('papers')" data-section="papers">Papers</a></li>
+            <li><a onclick="app.showSection('questions')" data-section="questions">Q-Bank</a></li>
+            <li><a onclick="app.showSection('assignments')" data-section="assignments">Assignments</a></li>
+            <li><a onclick="app.showSection('resources')" data-section="resources">Resources</a></li>
+            <li><a onclick="app.showSection('syllabus')" data-section="syllabus">Syllabus</a></li>
+        </ul>
+        <div class="nav-actions">
+            <span id="user-info" style="font-size: 0.8rem; opacity: 0.7;"></span>
+            <input type="text" id="search-input" placeholder="Search topics..." oninput="app.handleSearch(this.value)">
+            <button id="theme-toggle" onclick="app.toggleTheme()">
+                <i data-lucide="sun"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div id="auth-overlay">
+        <div class="auth-card">
+            <div class="logo" style="margin-bottom: 2rem; font-size: 2.5rem;">ML Portal</div>
+            <h2>Welcome, Student!</h2>
+            <p style="margin: 1rem 0; opacity: 0.7;">Secure access for enrolled students only.</p>
+            <button class="google-btn" onclick="app.handleMockLogin()">
+                <img src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png" width="20" alt="G">
+                Sign in with Google
+            </button>
+        </div>
+    </div>
+
+    <header id="hero">
+        <h1 id="hero-title">Master Machine Learning</h1>
+        <p id="hero-subtitle">Your one-stop destination for all course materials, notes, and study resources.</p>
+        <div id="global-progress" class="progress-section"
+            style="width: 100%; max-width: 600px; margin-top: 2rem; display: none;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                <span>Your Learning Progress</span>
+                <span id="progress-percent">0%</span>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="main-progress-bar"></div>
+            </div>
+        </div>
+    </header>
+
+    <main id="app-content">
+        <!-- Dashboard / Home Section -->
+        <section id="home-section">
+            <h2 class="section-title">Quick Access</h2>
+            <div class="grid">
+                <div class="card" onclick="app.showSection('notes')">
+                    <h3>Unit-wise Notes</h3>
+                    <p>Comprehensive study material for all 5 units.</p>
+                </div>
+                <div class="card" onclick="app.showSection('papers')">
+                    <h3>Previous Papers</h3>
+                    <p>Mid-sem and End-sem question papers archive.</p>
+                </div>
+                <div class="card" onclick="app.showSection('questions')">
+                    <h3>Question Bank</h3>
+                    <p>Practice important questions with difficulty tags.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Content will be injected here -->
+        <section id="dynamic-content" style="display: none;">
+            <div id="content-header">
+                <h2 class="section-title" id="page-title">Section Name</h2>
+            </div>
+            <div id="content-body">
+                <!-- Data-driven content -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div>
+                <h3 class="logo">ML Portal</h3>
+                <p>Empowering students with high-quality ML resources.</p>
+            </div>
+            <div>
+                <h4>Course Info</h4>
+                <p>CS402: Machine Learning</p>
+                <p>Semester: VI</p>
+                <p>Academic Year: 2025-26</p>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <p>Email: faculty@college.edu</p>
+                <p>Office: Block C, Room 302</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Machine Learning Student Portal. Built with ❤️ for Students.
+        </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div id="chatbot-btn" onclick="app.toggleChat()">
+        <i data-lucide="message-square"></i>
+    </div>
+
+    <div id="chatbot-window">
+        <div class="chat-header">
+            <span>ML Study Assistant</span>
+            <button onclick="app.toggleChat()"
+                style="background:none; border:none; color:white; cursor:pointer;">&times;</button>
+        </div>
+        <div id="chat-messages">
+            <div class="message bot-msg">Hi! I'm your ML study buddy. How can I help you today? You can ask about units,
+                syllabus, or where to find papers!</div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Type a message..."
+                onkeypress="if(event.key === 'Enter') app.sendChatMessage()">
+            <button class="btn btn-primary" onclick="app.sendChatMessage()" style="padding: 0.5rem;"><i
+                    data-lucide="send"></i></button>
+        </div>
+    </div>
+
+    <script type="module" src="js/script.js"></script>
+    <script>
+        // Lucide Icons initialization wait for script load
+        window.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html>

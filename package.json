@@ -1,0 +1,13 @@
+{
+  "name": "ml-resource-portal",
+  "version": "1.0.0",
+  "description": "A premium Machine Learning student resource portal.",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}

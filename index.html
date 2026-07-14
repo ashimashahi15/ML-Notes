@@ -64,6 +64,23 @@
     </header>
 
     <main id="app-content">
+        <!-- Dashboard / Home Section -->
+        <section id="home-section">
+            <h2 class="section-title">Quick Access</h2>
+            <div class="grid">
+                <div class="card" onclick="app.showSection('notes')">
+                    <h3>Unit-wise Notes</h3>
+                    <p>Comprehensive study material for all 5 units.</p>
+                </div>
+                <div class="card" onclick="app.showSection('papers')">
+                    <h3>Previous Papers</h3>
+                    <p>Mid-sem and End-sem question papers archive.</p>
+                </div>
+                <div class="card" onclick="app.showSection('questions')">
+                    <h3>Question Bank</h3>
+                    <p>Practice important questions with difficulty tags.</p>
+                </div>
+            </div>
         </section>
 
         <!-- Dynamic Content will be injected here -->
